@@ -25,6 +25,7 @@ module.exports = async (req, res) => {
     const alreadyPosted = timeline.data?.data?.some(tweet => tweet.text.includes(link));
 
     if (alreadyPosted) {
+      // Aqui retorna a mensagem correta!
       return res.status(200).json({ message: 'Já publicado anteriormente. Nenhuma ação tomada.' });
     }
 
@@ -37,10 +38,4 @@ module.exports = async (req, res) => {
     const { data: tweet } = await client.v2.tweet(firstTweet);
 
     // 6. Responde com o link
-    await client.v2.reply(secondTweet, tweet.id);
-
-    res.status(200).json({ message: 'Thread postada com sucesso!' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+    await
