@@ -41,6 +41,7 @@ module.exports = async (req, res) => {
 
     res.status(200).json({ message: 'Thread postada com sucesso!' });
   } catch (error) {
+    console.error('Erro detalhado:', error);
     res.status(500).json({ error: error.message });
   }
 };
